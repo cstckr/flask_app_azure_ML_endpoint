@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='mystyle.css')}}">
+</head>
+
+<body>
+    <div class="sidenav">
+        <p>
+            <a href="{{url_for('authentication.change_password')}}">
+                Change password
+            </a>
+        </p>
+        <p>
+            <a href="{{url_for('authentication.logout')}}">
+                Logout
+            </a>
+        </p>
+    </div>
+
+    <main>
+        <h1>
+            Demo app
+        </h1>
+        <p>
+            Upload an image of a digit and this app will tell you what digit it is.
+        </p>
+        <p> The image must be:
+            <li> jpg format </li>
+            <li> single channel </li>
+            <li> quadratic </li>
+            <li> smaller than 1 MB </li>
+        </p>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="action_field" align="left"> {{ form.file() }} </div> </br>
+            <div class="action_field" align="left"> {{ form.submit() }} </div>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li style="color:red;"> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </main>
+</body>
+
+</html>

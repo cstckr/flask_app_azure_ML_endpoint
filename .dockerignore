@@ -1,0 +1,6 @@
+old/
+yamls/
+model/
+scoring/
+train_model.py
+deploy_azure_endpoint.py
